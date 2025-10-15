@@ -75,7 +75,7 @@ const App: React.FC = () => {
             ></div>
           </div>
 
-          <div className="app-fade-in font-sans text-slate-300 w-full">
+          <div className="app-fade-in font-sans text-slate-300 w-full isolate">
             <Navbar onOpenModal={openModal} />
             <main>
               <Hero onOpenModal={openModal} />

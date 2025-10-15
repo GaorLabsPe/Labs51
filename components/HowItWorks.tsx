@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import ClipboardListIcon from './icons/ClipboardListIcon';
 import PaletteIcon from './icons/PaletteIcon';
 import ZapIcon from './icons/ZapIcon';
@@ -28,43 +28,6 @@ const steps = [
 ];
 
 const HowItWorks: React.FC = () => {
-    const [activeStep, setActiveStep] = useState(-1);
-    const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const stepIndex = parseInt(entry.target.getAttribute('data-step-index') || '-1', 10);
-                        setActiveStep((prevActiveStep) => Math.max(prevActiveStep, stepIndex));
-                    }
-                });
-            },
-            {
-                rootMargin: '0px 0px -40% 0px', // Trigger when the top 60% of the element is visible
-                threshold: 0.1
-            }
-        );
-
-        const currentRefs = stepRefs.current;
-        currentRefs.forEach((ref) => {
-            if (ref) {
-                observer.observe(ref);
-            }
-        });
-
-        return () => {
-            currentRefs.forEach((ref) => {
-                if (ref) {
-                    observer.unobserve(ref);
-                }
-            });
-        };
-    }, []);
-
-    const progressPercentage = activeStep >= 0 ? (activeStep / (steps.length - 1)) * 100 : 0;
-
     return (
         <section id="how-it-works" className="py-24 bg-[#1c1f48]/50" data-animate-section>
             <div className="container mx-auto px-6">
@@ -78,27 +41,22 @@ const HowItWorks: React.FC = () => {
                     </p>
                 </div>
 
-                {/* --- Progress Bar --- */}
+                {/* --- Static Progress Bar --- */}
                 <div className="relative mb-20 hidden md:block">
-                    {/* Background line */}
-                    <div className="absolute top-1/2 left-0 w-full h-1 bg-[#111439] -translate-y-1/2" aria-hidden="true"></div>
-                    
-                    {/* Progress fill line */}
+                    {/* Full progress line */}
                     <div 
-                        className="absolute top-1/2 left-0 h-1 gradient-bg -translate-y-1/2 transition-all duration-500 ease-out" 
-                        style={{ width: `${progressPercentage}%` }}
+                        className="absolute top-1/2 left-0 w-full h-1 gradient-bg -translate-y-1/2" 
                         aria-hidden="true"
                     ></div>
 
-                    {/* Step markers */}
+                    {/* Step markers (always active) */}
                     <div className="relative flex justify-between items-center">
                         {steps.map((step, index) => (
                             <div key={index} className="flex flex-col items-center text-center z-10">
-                                <div className={`h-16 w-16 rounded-full flex items-center justify-center border-4 transition-all duration-500 ease-out
-                                    ${activeStep >= index ? 'gradient-bg text-white border-[#1c1f48] scale-110' : 'bg-[#111439] text-slate-400 border-[#1c1f48]'}`}>
+                                <div className="h-16 w-16 rounded-full flex items-center justify-center border-4 gradient-bg text-white border-[#1c1f48] scale-110">
                                     {step.icon}
                                 </div>
-                                <p className={`mt-4 font-bold transition-colors duration-500 ${activeStep >= index ? 'text-white' : 'text-slate-400'}`}>
+                                <p className="mt-4 font-bold text-white">
                                     Paso {index + 1}
                                 </p>
                             </div>
@@ -106,15 +64,13 @@ const HowItWorks: React.FC = () => {
                     </div>
                 </div>
                 
-                {/* --- Step Descriptions --- */}
+                {/* --- Step Descriptions (using global animation) --- */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {steps.map((step, index) => (
                         <div 
                             key={index} 
-                            // FIX: The ref callback must not return a value. Changed from an arrow function expression to a block statement to ensure a void return type.
-                            ref={el => { stepRefs.current[index] = el; }}
-                            data-step-index={index}
-                            className={`text-center p-6 transition-opacity duration-700 ${activeStep >= index ? 'opacity-100' : 'opacity-40 md:opacity-100'}`} // On mobile, fade in as you scroll
+                            data-animate-stagger
+                            className="text-center p-6"
                         >
                             <div className="md:hidden relative flex items-center justify-center h-16 w-16 rounded-full gradient-bg text-white mx-auto mb-6 border-4 border-[#1c1f48]">
                                 {step.icon}

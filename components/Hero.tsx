@@ -5,13 +5,17 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
-  return (
-    <section className="relative bg-[#111439] overflow-hidden">
-        <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-            <div className="absolute w-[800px] h-[800px] rounded-full bg-[#8a2be2]/20 -top-48 -left-48" style={{filter: 'blur(150px)'}}></div>
-            <div className="absolute w-[700px] h-[700px] rounded-full bg-[#00f0b5]/20 -bottom-48 -right-24" style={{filter: 'blur(150px)'}}></div>
-        </div>
 
+  const handleScrollToFeatures = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section className="relative bg-[#111439]">
       <div className="container mx-auto px-6 py-20 md:py-24 lg:py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
@@ -30,6 +34,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               </button>
               <a 
                 href="#features" 
+                onClick={handleScrollToFeatures}
                 className="bg-transparent text-[#F8F8F9] font-bold py-3 px-8 rounded-lg border-2 border-[#F8F8F9]/50 hover:border-white hover:bg-white/5 text-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40">
                 Ver Características
               </a>
