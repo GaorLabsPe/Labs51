@@ -61,7 +61,17 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-[#111439] font-sans text-slate-300 relative z-10">
+    <div className="bg-[#111439] font-sans text-slate-300 relative z-10 w-full overflow-x-hidden">
+      {/* Background Shapes */}
+      <div 
+        className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px] -z-10"
+        aria-hidden="true"
+      ></div>
+      <div 
+        className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px] -z-10"
+        aria-hidden="true"
+      ></div>
+
       <Navbar />
       <main>
         <Hero />

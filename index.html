@@ -101,8 +101,6 @@
             color: #cbd5e1; /* slate-300 */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            position: relative;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
@@ -192,21 +190,9 @@
         .nav-link:hover::after {
             width: 100%;
         }
-
-        /* Background blurred shapes */
-        .body-bg-shape {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            filter: blur(150px);
-            z-index: -1;
-        }
     </style>
 </head>
 <body>
-    <div class="body-bg-shape" style="top: -100px; left: -100px; background-color: rgba(138, 43, 226, 0.2);"></div>
-    <div class="body-bg-shape" style="bottom: -100px; right: -100px; background-color: rgba(0, 240, 181, 0.2);"></div>
     <div id="root"></div>
     <script type="importmap">
     {
