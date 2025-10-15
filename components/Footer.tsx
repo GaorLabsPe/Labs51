@@ -1,8 +1,9 @@
 
 import React from 'react';
-import TwitterIcon from './icons/TwitterIcon';
-import LinkedinIcon from './icons/LinkedinIcon';
-import GithubIcon from './icons/GithubIcon';
+import YoutubeIcon from './icons/YoutubeIcon';
+import TiktokIcon from './icons/TiktokIcon';
+import InstagramIcon from './icons/InstagramIcon';
+import FacebookIcon from './icons/FacebookIcon';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {
@@ -28,9 +29,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-[#F8F8F9] mb-4">Síguenos</h4>
             <div className="flex space-x-4 justify-center md:justify-start">
-                <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><TwitterIcon /></a>
-                <a href="https://linkedin.com/company/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><LinkedinIcon /></a>
-                <a href="https://github.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><GithubIcon /></a>
+                <a href="https://youtube.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><YoutubeIcon /></a>
+                <a href="https://tiktok.com/@example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><TiktokIcon /></a>
+                <a href="https://instagram.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><InstagramIcon /></a>
+                <a href="https://facebook.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><FacebookIcon /></a>
             </div>
           </div>
         </div>
