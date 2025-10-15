@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 const Navbar: React.FC = () => {
@@ -25,8 +24,8 @@ const Navbar: React.FC = () => {
           <a href="#pricing" className="nav-link text-slate-300 font-medium hover:text-white transition-colors">Planes</a>
         </div>
         <div className="flex items-center space-x-4">
-            <a href="#contact" className="hidden sm:block text-slate-300 font-bold hover:text-white transition-colors nav-link">Contáctanos</a>
-            <a href="#pricing" className="gradient-bg text-white font-bold py-2 px-5 rounded-lg hover:opacity-90 transition-all duration-300 btn-glow">Empezar Ahora</a>
+            <a href="#" data-trigger-modal className="hidden sm:block text-slate-300 font-bold hover:text-white transition-colors nav-link">Contáctanos</a>
+            <a href="#" data-trigger-modal className="gradient-bg text-white font-bold py-2 px-5 rounded-lg hover:opacity-90 transition-all duration-300 btn-glow">Empezar Ahora</a>
         </div>
       </nav>
     </header>

@@ -29,7 +29,7 @@ const Pricing: React.FC = () => {
                             <li className="flex items-start"><div className="text-[#00f0b5] mr-3 flex-shrink-0 pt-1"><CheckIcon /></div><span className="text-slate-300">Pasarela de Pagos</span></li>
                             <li className="flex items-start"><div className="text-[#00f0b5] mr-3 flex-shrink-0 pt-1"><CheckIcon /></div><span className="text-slate-300">3 Automatizaciones Clave</span></li>
                         </ul>
-                        <a href="#contact" className="w-full text-center bg-transparent text-[#F8F8F9] font-bold py-3 px-8 rounded-lg border-2 border-[#F8F8F9]/50 hover:border-white hover:bg-white/5 text-lg transition-all duration-300">
+                        <a href="#" data-trigger-modal className="w-full text-center bg-transparent text-[#F8F8F9] font-bold py-3 px-8 rounded-lg border-2 border-[#F8F8F9]/50 hover:border-white hover:bg-white/5 text-lg transition-all duration-300">
                             Me Interesa
                         </a>
                     </div>
@@ -49,7 +49,7 @@ const Pricing: React.FC = () => {
                             <li className="flex items-start"><div className="text-[#00f0b5] mr-3 flex-shrink-0 pt-1"><CheckIcon /></div><span className="text-slate-300">CRM y Gestión de Clientes</span></li>
                             <li className="flex items-start"><div className="text-[#00f0b5] mr-3 flex-shrink-0 pt-1"><CheckIcon /></div><span className="text-slate-300">Automatizaciones Ilimitadas</span></li>
                         </ul>
-                        <a href="#contact" className="w-full text-center gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 hover:scale-105 btn-glow">
+                        <a href="#" data-trigger-modal className="w-full text-center gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 hover:scale-105 btn-glow">
                             Agendar Consulta
                         </a>
                     </div>

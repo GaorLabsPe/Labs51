@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -11,9 +11,13 @@ import Growth from './components/Growth';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import ChatButton from './components/ChatButton';
+import ContactModal from './components/ContactModal'; // Importar el nuevo modal
 
 const App: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para el modal
+
   useEffect(() => {
+    // Observador para animaciones de scroll
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -37,10 +41,22 @@ const App: React.FC = () => {
       observer.observe(section);
     });
 
+    // Listener de eventos para los disparadores del modal
+    const handleModalTriggerClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('[data-trigger-modal]')) {
+        e.preventDefault();
+        setIsModalOpen(true);
+      }
+    };
+
+    document.addEventListener('click', handleModalTriggerClick);
+
     return () => {
       sections.forEach(section => {
         observer.unobserve(section);
       });
+      document.removeEventListener('click', handleModalTriggerClick);
     };
   }, []);
 
@@ -60,6 +76,7 @@ const App: React.FC = () => {
       </main>
       <Footer />
       <ChatButton />
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
