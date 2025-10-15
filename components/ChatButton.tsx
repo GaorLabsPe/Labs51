@@ -130,7 +130,7 @@ const ChatButton: React.FC = () => {
             </div>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="gradient-bg text-white rounded-full p-4 shadow-lg hover:opacity-90 transition-all duration-300"
+                className={`gradient-bg text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110 ${!isOpen ? 'animate-pulse-glow' : ''}`}
                 aria-label="Toggle chat"
             >
                 {isOpen ? <CloseIcon /> : <ChatIcon />}

@@ -25,9 +25,9 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-[#F8F8F9] mb-4">Síguenos</h4>
             <div className="flex space-x-4">
-                <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer" className="hover:text-[#00f0b5] transition-colors"><TwitterIcon /></a>
-                <a href="https://linkedin.com/company/example" target="_blank" rel="noopener noreferrer" className="hover:text-[#00f0b5] transition-colors"><LinkedinIcon /></a>
-                <a href="https://github.com/example" target="_blank" rel="noopener noreferrer" className="hover:text-[#00f0b5] transition-colors"><GithubIcon /></a>
+                <a href="https://twitter.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><TwitterIcon /></a>
+                <a href="https://linkedin.com/company/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><LinkedinIcon /></a>
+                <a href="https://github.com/example" target="_blank" rel="noopener noreferrer" className="inline-block hover:text-[#00f0b5] transition-all duration-300 hover:scale-110"><GithubIcon /></a>
             </div>
           </div>
         </div>

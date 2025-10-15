@@ -43,7 +43,7 @@ const Growth: React.FC = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {growthData.map((feature, index) => (
-            <div key={index}>
+            <div key={index} data-animate-stagger>
                 <GrowthCard icon={feature.icon} title={feature.title} description={feature.description} />
             </div>
           ))}

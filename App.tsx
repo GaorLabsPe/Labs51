@@ -4,19 +4,30 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Automation from './components/Automation';
 import ServiceIncludes from './components/ServiceIncludes';
+import Stats from './components/Stats';
 import Growth from './components/Growth';
 import Footer from './components/Footer';
 import ChatButton from './components/ChatButton';
 
 const App: React.FC = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          const section = entry.target;
+          section.classList.add('animate-in');
+
+          const staggerChildren = section.querySelectorAll('[data-animate-stagger]');
+          if (staggerChildren.length > 0) {
+            staggerChildren.forEach((child, index) => {
+              (child as HTMLElement).style.transitionDelay = `${index * 150}ms`;
+              child.classList.add('animate-in');
+            });
+          }
+          obs.unobserve(section);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     const sections = document.querySelectorAll('[data-animate-section]');
     sections.forEach(section => {
@@ -38,6 +49,7 @@ const App: React.FC = () => {
         <Features />
         <Automation />
         <ServiceIncludes />
+        <Stats />
         <Growth />
       </main>
       <Footer />

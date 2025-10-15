@@ -7,6 +7,86 @@ import InvoiceIcon from './icons/InvoiceIcon';
 import UsersIcon from './icons/UsersIcon';
 import CogIcon from './icons/CogIcon';
 
+// Nuevo componente de ilustración SVG, creado para coincidir con el diseño deseado.
+const AutomationIllustration: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <svg 
+      width="500" 
+      height="500" 
+      viewBox="0 0 500 500" 
+      xmlns="http://www.w3.org/2000/svg" 
+      className={className} 
+      aria-labelledby="automation-title" 
+      role="img"
+    >
+      <title id="automation-title">Diagrama de flujos de automatización para e-commerce</title>
+      <defs>
+        <linearGradient id="auto-grad-jsx" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#8a2be2' }} />
+          <stop offset="100%" style={{ stopColor: '#00f0b5' }} />
+        </linearGradient>
+        <filter id="auto-shadow-jsx" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="8" stdDeviation="15" floodColor="#000000" floodOpacity="0.2" />
+        </filter>
+      </defs>
+
+      {/* Dashed Connecting Lines */}
+      <g opacity="0.6">
+        <line x1="250" y1="250" x2="100" y2="100" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
+        <line x1="250" y1="250" x2="400" y2="100" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
+        <line x1="250" y1="250" x2="100" y2="400" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
+        <line x1="250" y1="250" x2="400" y2="400" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
+      </g>
+
+      {/* Central Orb */}
+      <g transform="translate(250, 250)" filter="url(#auto-shadow-jsx)">
+        <circle cx="0" cy="0" r="50" fill="#1c1f48" />
+        <circle cx="0" cy="0" r="50" stroke="url(#auto-grad-jsx)" strokeWidth="2" fill="none" />
+        <ellipse cx="-15" cy="-8" rx="5" ry="8" fill="#111439" transform="rotate(-30, -15, -8)" />
+        <ellipse cx="15" cy="-8" rx="5" ry="8" fill="#111439" transform="rotate(30, 15, -8)" />
+        <ellipse cx="0" cy="16" rx="8" ry="5" fill="#111439" />
+      </g>
+
+      {/* Top-Left: Search Icon */}
+      <g transform="translate(70, 70)" filter="url(#auto-shadow-jsx)">
+        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
+        <g transform="translate(18, 18)">
+          <circle cx="11" cy="11" r="6" stroke="#8a2be2" strokeWidth="2" fill="none" />
+          <line x1="15" y1="15" x2="20" y2="20" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
+        </g>
+      </g>
+
+      {/* Top-Right: Email Icon */}
+      <g transform="translate(370, 70)" filter="url(#auto-shadow-jsx)">
+        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
+        <g transform="translate(17, 21)">
+          <rect x="0" y="0" width="26" height="18" rx="2" stroke="#00f0b5" strokeWidth="2" fill="none" />
+          <polyline points="0 2 13 11 26 2" stroke="#00f0b5" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        </g>
+      </g>
+
+      {/* Bottom-Left: Menu Icon */}
+      <g transform="translate(70, 370)" filter="url(#auto-shadow-jsx)">
+        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
+        <g transform="translate(21, 24)">
+          <line x1="0" y1="0" x2="18" y2="0" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
+          <line x1="0" y1="6" x2="18" y2="6" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
+          <line x1="0" y1="12" x2="18" y2="12" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
+        </g>
+      </g>
+
+      {/* Bottom-Right: User Icon */}
+      <g transform="translate(370, 370)" filter="url(#auto-shadow-jsx)">
+        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
+        <g transform="translate(20, 18)">
+          <circle cx="10" cy="6" r="4" stroke="#00f0b5" strokeWidth="2" fill="none" />
+          <path d="M 2 18 v -2 a 4 4 0 0 1 4 -4 h 8 a 4 4 0 0 1 4 4 v 2" stroke="#00f0b5" strokeWidth="2" fill="none" strokeLinecap="round" />
+        </g>
+      </g>
+    </svg>
+  );
+};
+
 const Automation: React.FC = () => {
     const automations = [
         { icon: <WhatsappIcon />, text: 'Notificaciones de pedidos por WhatsApp' },
@@ -16,13 +96,13 @@ const Automation: React.FC = () => {
         { icon: <UsersIcon />, text: 'Dashboard y CRM para gestión de clientes' },
         { icon: <BoltIcon />, text: 'Y muchas más integraciones...' },
     ]
-    const automationImageSrc = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhdXRvLWdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM4YTJiZTIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMGYwYjUiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9ImF1dG8tc2hhZG93IiB4PSItMzAlIiB5PSItMzAlIiB3aWR0aD0iMTYwJSIgaGVpZ2h0PSIxNjAlIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxNSIgZmxvb2QtY29sb3I9IiMwMDAwMDAiIGZsb29kLW9wYWNpdHk9IjAuMiIvPjwvZmlsdGVyPjwvZGVmcz48ZyBvcGFjaXR5PSIwLjYiPjxwYXRoIGQ9Ik0gMjUwIDI1MCBRIDEwMCAxMDAgODAgODAiIHN0cm9rZT0idXJsKCNhdXRvLWdyYWQpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iNSAxMCIvPjxwYXRoIGQ9Ik0gMjUwIDI1MCBRIDQwMCAxMDAgNDIwIDgwIiBzdHJva2U9InVybCgjYXV0by1ncmFkKSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1kYXNoYXJyYXk9IjUgMTAiLz48cGF0aCBkPSJNICAyNTAgMjUwIFEgMTAwIDQwMCA4MCA0MjAiIHN0cm9rZT0idXJsKCNhdXRvLWdyYWQpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iNSAxMCIvPjxwYXRoIGQ9Ik0gMjUwIDI1MCBRIDQwMCA0MDAgNDIwIDQyMCIgc3Ryb2tlPSJ1cmwoI2F1dG8tZ3JhZCkiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSI1IDEwIi8+PC9nPjxnIGZpbHRlcj0idXJsKCNhdXRvLXNoYWRvdykiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1MCwgMjUwKSI+PHBhdGggZD0iTSAwIC00MCBBIDQwIDQwIDAgMCAxIDAgNDAgQSA0MCA0MCAwIDAgMSAwIC00MCBaIE0gMCAtMzAgTCA1IC0yNSBMIDUgLTE1IEwgMCAtMTAgTCAtNSAtMTUgTCAtNSAtMjUgWiBNIDAgMzAgTCA1IDI1IEwgNSAxNSBMIDAgMTAgTCAtNSAxNSBMIC01IDI1IFogTSAtMzAgMCBMIC0yNSA1IEwgLTE1IDUgTCAtMTAgMCBMIC0xNSAtNSBMIC0yNSAtNSBaIE0gMzAgMCBMIDI1IDUgTCAxNSA1IEwgMTAgMCBMIDE1IC01IEwgMjUgLTUgWiIgZmlsbD0iIzFjMWY0OCIgY2xhc3M9ImFuaW1hdGUtc3BpbiIgc3R5bGU9ImFuaW1hdGlvbi1kdXJhdGlvbjogMTBzOyB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ii8+PHBhdGggZD0iTSAwIC00MCBBIDQwIDQwIDAgMCAxIDAgNDAgQSA0MCA0MCAwIDAgMSAwIC00MCBNIDAgMCBBIDE1IDE1IDAgMCAxIDAgMCIgc3Ryb2tlPSJ1cmwoI2F1dG8tZ3JhZCkiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCwgNTApIiBmaWx0ZXI9InVybCgjYXV0by1zaGFkb3cpIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIzMCIgZmlsbD0iIzFjMWY0OCIvPjxwYXRoIGQ9Ik0yMiAzOGwxLjMgLTMuOWE3IDcgMCAxIDEgMi40IDIuNGwtMy43IC43IiBzdHJva2U9IiM4YTJiZTIiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM5MCwgNTApIiBmaWx0ZXI9InVybCgjYXV0by1zaGFkb3cpIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIzMCIgZmlsbD0iIzFjMWY0OCIvPjxwYXRoIGQ9Ik0yMiAyNCBMMzAgMzIgTDM4IDI0IiBzdHJva2U9IiMwMGYwYjUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHJlY3QgeD0iMjIiIHk9IjI0IiB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHJ4PSIyIiBzdHJva2U9IiMwMGYwYjUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCwgMzkwKSIgZmlsdGVyPSJ1cmwoI2F1dG8tc2hhZG93KSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiIGZpbGw9IiMxYzFmNDgiLz48cGF0aCBkPSJNMjIgMzBoMTYgTTIyIDI0aDE2IE0yMiAzNmgxMCIgc3Ryb2tlPSIjOGEyYmUyIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOTAsIDM5MCkiIGZpbHRlcj0idXJsKCNhdXRvLXNoYWRvdykiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjMwIiBmaWxsPSIjMWMxZjQ4Ii8+PGNpcmNsZSBjeD0iMzAiIGN5PSIyNiIgcj0iNCIgc3Ryb2tlPSIjMDBmMGI1IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMjIgMzh2LTJhNCA0IDAgMCAxIDQgLTRoOGE0IDQgMCAwIDEgNCA0djIiIHN0cm9rZT0iIzAwZjBiNSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L2c+PC9zdmc+";
+
   return (
     <section id="automation" className="py-24" data-animate-section>
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center lg:order-last">
-            <img src={automationImageSrc} alt="Flujos de automatización para e-commerce usando la integración n8n" className="max-w-md w-full h-auto" />
+            <AutomationIllustration className="max-w-md w-full h-auto animate-float" />
           </div>
           <div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
@@ -32,11 +112,24 @@ const Automation: React.FC = () => {
             <p className="text-lg text-slate-300 mb-8">Ahorra tiempo y optimiza tus procesos con flujos de trabajo personalizados. Gracias a nuestra experiencia en integración n8n, creamos automatizaciones que se ejecutan 24/7, permitiéndote enfocarte en crecer.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {automations.map((item, index) => (
-                <div key={index} className="flex items-center p-4 bg-[#1c1f48] rounded-xl border border-transparent hover:border-[#00f0b5]/50 transition-colors duration-300">
-                  <div className="flex-shrink-0 text-[#00f0b5] mr-4">
-                    {item.icon}
+                <div 
+                  key={index} 
+                  data-animate-stagger 
+                  className="group relative bg-[#1c1f48] rounded-xl p-4 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#8a2be2]/20"
+                >
+                  {/* Animated Shine Effect */}
+                  <div 
+                    className="absolute top-0 -left-full w-[200%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 ease-out group-hover:left-full" 
+                    aria-hidden="true"
+                  ></div>
+                  
+                  {/* Content */}
+                  <div className="relative flex items-center">
+                    <div className="flex-shrink-0 text-[#00f0b5] mr-4 transition-all duration-300 group-hover:scale-110 group-hover:text-white">
+                      {item.icon}
+                    </div>
+                    <span className="text-[#F8F8F9] font-medium">{item.text}</span>
                   </div>
-                  <span className="text-[#F8F8F9] font-medium">{item.text}</span>
                 </div>
               ))}
             </div>

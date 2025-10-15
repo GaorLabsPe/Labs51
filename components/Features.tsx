@@ -52,7 +52,7 @@ const Features: React.FC = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuresData.map((feature, index) => (
-            <div key={index}>
+            <div key={index} data-animate-stagger>
                 <FeatureCard icon={feature.icon} title={feature.title} items={feature.items} />
             </div>
           ))}

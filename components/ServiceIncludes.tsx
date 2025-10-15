@@ -24,8 +24,8 @@ const ServiceIncludes: React.FC = () => {
             <p className="text-lg text-slate-300 mb-8">Nos encargamos de todo el proceso técnico para que puedas enfocarte en vender.</p>
             <ul className="space-y-4">
               {items.map((item, index) => (
-                <li key={index} className="flex items-start">
-                   <div className="flex-shrink-0 h-6 w-6 rounded-full gradient-bg flex items-center justify-center mr-4 mt-1 text-white">
+                <li key={index} data-animate-stagger className="flex items-start group">
+                   <div className="flex-shrink-0 h-6 w-6 rounded-full gradient-bg flex items-center justify-center mr-4 mt-1 text-white transition-transform duration-300 group-hover:scale-110">
                      <CheckIcon />
                   </div>
                   <span className="text-lg text-slate-300">{item}</span>

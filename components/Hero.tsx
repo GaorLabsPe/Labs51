@@ -13,7 +13,7 @@ const HeroIllustration: React.FC<{ className?: string }> = ({ className }) => {
       aria-labelledby="hero-title"
       role="img"
     >
-      <title id="hero-title">Diagrama de automatización de negocio e-commerce con Labs51</title>
+      <title id="hero-title">Diagrama de automatización de negocio con una tienda online de Labs51</title>
       <defs>
         <linearGradient id="hero-grad-jsx" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style={{stopColor:'#8a2be2'}}/>
@@ -46,8 +46,7 @@ const HeroIllustration: React.FC<{ className?: string }> = ({ className }) => {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative bg-[#111439] animate-fade-in overflow-hidden">
-        {/* Replaced SVG background with more reliable CSS blurred shapes */}
+    <section className="relative bg-[#111439] overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
             <div className="absolute w-[800px] h-[800px] rounded-full bg-[#8a2be2]/20 -top-48 -left-48" style={{filter: 'blur(150px)'}}></div>
             <div className="absolute w-[700px] h-[700px] rounded-full bg-[#00f0b5]/20 -bottom-48 -right-24" style={{filter: 'blur(150px)'}}></div>
@@ -56,16 +55,16 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 py-32 md:py-40 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#F8F8F9] mb-6">
-              Automatiza tu <span className="gradient-text">E-commerce</span> y Vende Más
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#F8F8F9] mb-6 animate-fadeInUp" style={{animationDelay: '0.1s'}}>
+              Automatiza tu Negocio con una <span className="gradient-text">Tienda Online</span> y Vende Más
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl mx-auto lg:mx-0 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
               La plataforma todo-en-uno para crear y escalar tu tienda online con potentes automatizaciones n8n, sin complicaciones técnicas.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fadeInUp" style={{animationDelay: '0.5s'}}>
               <a 
                 href="#contact" 
-                className="gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/40">
+                className="gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/40 btn-glow">
                 Empezar Ahora
               </a>
               <a 

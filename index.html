@@ -26,15 +26,52 @@
             font-family: 'Poppins', sans-serif;
             color: #F8F8F9;
         }
+        
+        /* -- ANIMATIONS -- */
+
+        /* Initial state for scroll-triggered elements */
+        [data-animate-section], [data-animate-stagger] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Active state for scroll-triggered elements */
         .animate-in {
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
-        [data-animate-section] {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+        /* Hero entrance animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        .animate-fadeInUp {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Float animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Chat button pulse animation */
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 240, 181, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 240, 181, 0); }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        /* -- UI ENHANCEMENTS -- */
         .gradient-text {
             background: linear-gradient(to right, #8a2be2, #00f0b5);
             -webkit-background-clip: text;
@@ -45,11 +82,30 @@
         .gradient-bg {
             background: linear-gradient(to right, #8a2be2, #00f0b5);
         }
-        .gradient-border {
-            border: 2px solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(to right, #8a2be2, #00f0b5);
+        .btn-glow:hover {
+            box-shadow: 0 0 20px 0px rgba(138, 43, 226, 0.5), 0 0 15px 0px rgba(0, 240, 181, 0.4);
         }
+
+        /* Navbar link underline effect */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, #8a2be2, #00f0b5);
+            transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Background blurred shapes */
         .body-bg-shape {
             position: absolute;
             width: 500px;
@@ -57,14 +113,6 @@
             border-radius: 50%;
             filter: blur(150px);
             z-index: -1;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
