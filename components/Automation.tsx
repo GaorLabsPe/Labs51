@@ -6,86 +6,6 @@ import UsersIcon from './icons/UsersIcon';
 import CartClockIcon from './icons/CartClockIcon';
 import TagIcon from './icons/TagIcon';
 
-// Nuevo componente de ilustración SVG, creado para coincidir con el diseño deseado.
-const AutomationIllustration: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <svg 
-      width="500" 
-      height="500" 
-      viewBox="0 0 500 500" 
-      xmlns="http://www.w3.org/2000/svg" 
-      className={className} 
-      aria-labelledby="automation-title" 
-      role="img"
-    >
-      <title id="automation-title">Diagrama de flujos de automatización para e-commerce</title>
-      <defs>
-        <linearGradient id="auto-grad-jsx" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8a2be2" />
-          <stop offset="100%" stopColor="#00f0b5" />
-        </linearGradient>
-        <filter id="auto-shadow-jsx" x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="8" stdDeviation="15" floodColor="#000000" floodOpacity="0.2" />
-        </filter>
-      </defs>
-
-      {/* Dashed Connecting Lines */}
-      <g opacity="0.6">
-        <line x1="250" y1="250" x2="100" y2="100" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
-        <line x1="250" y1="250" x2="400" y2="100" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
-        <line x1="250" y1="250" x2="100" y2="400" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
-        <line x1="250" y1="250" x2="400" y2="400" stroke="url(#auto-grad-jsx)" strokeWidth="2" strokeDasharray="5 10" />
-      </g>
-
-      {/* Central Orb */}
-      <g transform="translate(250, 250)" filter="url(#auto-shadow-jsx)">
-        <circle cx="0" cy="0" r="50" fill="#1c1f48" />
-        <circle cx="0" cy="0" r="50" stroke="url(#auto-grad-jsx)" strokeWidth="2" fill="none" />
-        <ellipse cx="-15" cy="-8" rx="5" ry="8" fill="#111439" transform="rotate(-30, -15, -8)" />
-        <ellipse cx="15" cy="-8" rx="5" ry="8" fill="#111439" transform="rotate(30, 15, -8)" />
-        <ellipse cx="0" cy="16" rx="8" ry="5" fill="#111439" />
-      </g>
-
-      {/* Top-Left: Search Icon */}
-      <g transform="translate(70, 70)" filter="url(#auto-shadow-jsx)">
-        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
-        <g transform="translate(18, 18)">
-          <circle cx="11" cy="11" r="6" stroke="#8a2be2" strokeWidth="2" fill="none" />
-          <line x1="15" y1="15" x2="20" y2="20" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
-        </g>
-      </g>
-
-      {/* Top-Right: Email Icon */}
-      <g transform="translate(370, 70)" filter="url(#auto-shadow-jsx)">
-        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
-        <g transform="translate(17, 21)">
-          <rect x="0" y="0" width="26" height="18" rx="2" stroke="#00f0b5" strokeWidth="2" fill="none" />
-          <polyline points="0 2 13 11 26 2" stroke="#00f0b5" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        </g>
-      </g>
-
-      {/* Bottom-Left: Menu Icon */}
-      <g transform="translate(70, 370)" filter="url(#auto-shadow-jsx)">
-        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
-        <g transform="translate(21, 24)">
-          <line x1="0" y1="0" x2="18" y2="0" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
-          <line x1="0" y1="6" x2="18" y2="6" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
-          <line x1="0" y1="12" x2="18" y2="12" stroke="#8a2be2" strokeWidth="2" strokeLinecap="round" />
-        </g>
-      </g>
-
-      {/* Bottom-Right: User Icon */}
-      <g transform="translate(370, 370)" filter="url(#auto-shadow-jsx)">
-        <circle cx="30" cy="30" r="30" fill="#1c1f48" />
-        <g transform="translate(20, 18)">
-          <circle cx="10" cy="6" r="4" stroke="#00f0b5" strokeWidth="2" fill="none" />
-          <path d="M 2 18 v -2 a 4 4 0 0 1 4 -4 h 8 a 4 4 0 0 1 4 4 v 2" stroke="#00f0b5" strokeWidth="2" fill="none" strokeLinecap="round" />
-        </g>
-      </g>
-    </svg>
-  );
-};
-
 const Automation: React.FC = () => {
     const automations = [
         { icon: <WhatsappIcon />, text: 'Notificaciones de pedidos por WhatsApp' },
@@ -101,7 +21,16 @@ const Automation: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center lg:order-last">
-            <AutomationIllustration className="max-w-md w-full h-auto animate-float" />
+            <div className="w-full max-w-lg h-auto rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 border-2 border-white/10 animate-float bg-[#111439]">
+                <img
+                    src="https://www.businessempresarial.com.pe/wp-content/uploads/2024/08/Foto-2-Emprendimiento.webp"
+                    alt="Emprendedora sonriente en su tienda física, revisando su laptop, representando el éxito del negocio."
+                    className="w-full h-full object-cover"
+                    width="600"
+                    height="400"
+                    loading="lazy"
+                />
+            </div>
           </div>
           <div>
             <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
