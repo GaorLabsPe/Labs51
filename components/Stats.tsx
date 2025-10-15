@@ -38,7 +38,7 @@ const StatItem: React.FC<{ icon: React.ReactNode; value: number; label: string; 
             <div className="flex items-center justify-center h-16 w-16 rounded-full gradient-bg text-white mx-auto mb-4">
                 {icon}
             </div>
-            <p className="text-5xl font-bold gradient-text">{count}+</p>
+            <p className="text-4xl sm:text-5xl font-bold gradient-text">{count}+</p>
             <p className="text-lg text-slate-300 mt-2">{label}</p>
         </div>
     );
@@ -80,7 +80,7 @@ const Stats: React.FC = () => {
         <section ref={sectionRef} className="py-20 bg-[#1c1f48]/50" data-animate-section>
             <div className="container mx-auto px-6">
                  <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                    <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
                         <span className="block text-[#F8F8F9]">Resultados que</span>
                         <span className="gradient-text">Impulsan Negocios</span>
                     </h2>

@@ -44,6 +44,7 @@ const Logo: React.FC<{ className?: string }> = ({ className }) => {
           }
           #logo-text-group {
             opacity: 0;
+            transform: translateX(-10px);
             animation: fade-in-text 0.8s ease-out 1.2s forwards;
           }
         `}

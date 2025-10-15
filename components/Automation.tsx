@@ -104,7 +104,7 @@ const Automation: React.FC = () => {
             <AutomationIllustration className="max-w-md w-full h-auto animate-float" />
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
                <span className="gradient-text">Automatización con n8n</span>
                <span className="block text-[#F8F8F9]">que trabaja para ti</span>
             </h2>

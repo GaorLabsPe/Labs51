@@ -52,10 +52,10 @@ const Hero: React.FC = () => {
             <div className="absolute w-[700px] h-[700px] rounded-full bg-[#00f0b5]/20 -bottom-48 -right-24" style={{filter: 'blur(150px)'}}></div>
         </div>
 
-      <div className="container mx-auto px-6 py-16 sm:py-24 md:py-32 relative z-10">
+      <div className="container mx-auto px-6 py-20 md:py-24 lg:py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-[2.1rem] leading-tight sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#F8F8F9] mb-6 animate-fadeInUp" style={{animationDelay: '0.1s'}}>
+            <h1 className="text-4xl leading-tight sm:text-5xl md:text-6xl font-bold tracking-tight text-[#F8F8F9] mb-6 animate-fadeInUp" style={{animationDelay: '0.1s'}}>
               Automatiza tu Negocio con una <span className="gradient-text">Tienda Online</span> y Vende Más
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl mx-auto lg:mx-0 animate-fadeInUp" style={{animationDelay: '0.3s'}}>

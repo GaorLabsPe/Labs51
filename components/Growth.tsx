@@ -33,7 +33,7 @@ const Growth: React.FC = () => {
     <section id="growth" className="py-24" data-animate-section>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
             <span className="block text-[#F8F8F9]">Diseñado para tu</span>
             <span className="gradient-text">Crecimiento Exponencial</span>
           </h2>

@@ -32,7 +32,7 @@ const HowItWorks: React.FC = () => {
         <section id="how-it-works" className="py-24 bg-[#1c1f48]/50" data-animate-section>
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                    <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
                         <span className="block text-[#F8F8F9]">Tu Tienda Online en</span>
                         <span className="gradient-text">4 Pasos Sencillos</span>
                     </h2>
