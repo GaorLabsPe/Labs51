@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -60,33 +61,35 @@ const App: React.FC = () => {
       {isLoading ? (
         <LoadingScreen onAnimationComplete={() => setIsLoading(false)} />
       ) : (
-        <div className="app-fade-in bg-[#111439] font-sans text-slate-300 relative z-10 w-full overflow-x-hidden">
-          {/* Background Shapes */}
-          <div 
-            className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px] -z-10"
-            aria-hidden="true"
-          ></div>
-          <div 
-            className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px] -z-10"
-            aria-hidden="true"
-          ></div>
+        <>
+          <div className="app-fade-in bg-[#111439] font-sans text-slate-300 relative w-full overflow-x-hidden">
+            {/* Background Shapes */}
+            <div 
+              className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px] -z-10"
+              aria-hidden="true"
+            ></div>
+            <div 
+              className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px] -z-10"
+              aria-hidden="true"
+            ></div>
 
-          <Navbar onOpenModal={openModal} />
-          <main>
-            <Hero onOpenModal={openModal} />
-            <Features />
-            <HowItWorks />
-            <Automation />
-            <ServiceIncludes />
-            <Stats />
-            <Testimonials />
-            <Growth />
-            <Pricing onOpenModal={openModal} />
-          </main>
-          <Footer />
-          <ChatButton />
+            <Navbar onOpenModal={openModal} />
+            <main>
+              <Hero onOpenModal={openModal} />
+              <Features />
+              <HowItWorks />
+              <Automation />
+              <ServiceIncludes />
+              <Stats />
+              <Testimonials />
+              <Growth />
+              <Pricing onOpenModal={openModal} />
+            </main>
+            <Footer />
+            <ChatButton />
+          </div>
           <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        </div>
+        </>
       )}
     </>
   );
