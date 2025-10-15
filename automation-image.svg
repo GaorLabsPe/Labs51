@@ -1,0 +1,46 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="auto-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8a2be2"/>
+      <stop offset="100%" style="stop-color:#00f0b5"/>
+    </linearGradient>
+    <filter id="auto-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Flowing Lines -->
+  <g opacity="0.6">
+    <path d="M 250 250 Q 100 100 80 80" stroke="url(#auto-grad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 10"/>
+    <path d="M 250 250 Q 400 100 420 80" stroke="url(#auto-grad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 10"/>
+    <path d="M 250 250 Q 100 400 80 420" stroke="url(#auto-grad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 10"/>
+    <path d="M 250 250 Q 400 400 420 420" stroke="url(#auto-grad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 10"/>
+  </g>
+
+  <!-- Central Cog -->
+  <g filter="url(#auto-shadow)" transform="translate(250, 250)">
+    <path d="M 0 -40 A 40 40 0 0 1 0 40 A 40 40 0 0 1 0 -40 Z M 0 -30 L 5 -25 L 5 -15 L 0 -10 L -5 -15 L -5 -25 Z M 0 30 L 5 25 L 5 15 L 0 10 L -5 15 L -5 25 Z M -30 0 L -25 5 L -15 5 L -10 0 L -15 -5 L -25 -5 Z M 30 0 L 25 5 L 15 5 L 10 0 L 15 -5 L 25 -5 Z" fill="#1c1f48" class="animate-spin" style="animation-duration: 10s; transform-origin: center;"/>
+    <path d="M 0 -40 A 40 40 0 0 1 0 40 A 40 40 0 0 1 0 -40 M 0 0 A 15 15 0 0 1 0 0" stroke="url(#auto-grad)" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- Icons -->
+  <g transform="translate(50, 50)" filter="url(#auto-shadow)">
+    <circle cx="30" cy="30" r="30" fill="#1c1f48"/>
+    <path d="M22 38l1.3 -3.9a7 7 0 1 1 2.4 2.4l-3.7 .7" stroke="#8a2be2" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(390, 50)" filter="url(#auto-shadow)">
+    <circle cx="30" cy="30" r="30" fill="#1c1f48"/>
+    <path d="M22 24 L30 32 L38 24" stroke="#00f0b5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="22" y="24" width="16" height="12" rx="2" stroke="#00f0b5" stroke-width="2" fill="none"/>
+  </g>
+  <g transform="translate(50, 390)" filter="url(#auto-shadow)">
+    <circle cx="30" cy="30" r="30" fill="#1c1f48"/>
+    <path d="M22 30h16 M22 24h16 M22 36h10" stroke="#8a2be2" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(390, 390)" filter="url(#auto-shadow)">
+    <circle cx="30" cy="30" r="30" fill="#1c1f48"/>
+    <circle cx="30" cy="26" r="4" stroke="#00f0b5" stroke-width="2" fill="none"/>
+    <path d="M22 38v-2a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v2" stroke="#00f0b5" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+
+</svg>
