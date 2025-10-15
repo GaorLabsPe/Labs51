@@ -39,6 +39,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const [errors, setErrors] = useState({ name: '', phone: '', business: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [submissionError, setSubmissionError] = useState<string | null>(null);
     const modalRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
@@ -106,6 +107,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 setIsSuccess(false);
                 setIsSubmitting(false);
                 setErrors({ name: '', phone: '', business: '' });
+                setSubmissionError(null);
             }, 300); // Coincide con la duración de la transición
             return () => clearTimeout(timer);
         }
@@ -139,23 +141,46 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         return isValid;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!validateForm()) {
             return;
         }
 
         setIsSubmitting(true);
-        // Simulación de envío
-        // console.log('Submitting:', { name, phone: `${countryCode}${phone}`, business });
-        setTimeout(() => {
-            setIsSubmitting(false);
+        setSubmissionError(null);
+
+        try {
+            const fullPhoneNumber = `${countryCode}${phone.replace(/[\s-()]/g, '')}`;
+            
+            // Endpoint del backend que guarda en Supabase y dispara la automatización n8n
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name.trim(),
+                    phone: fullPhoneNumber,
+                    business: business.trim(),
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ message: 'Error en el servidor. Intenta de nuevo.' }));
+                throw new Error(errorData.message || 'No se pudo completar la solicitud.');
+            }
+
             setIsSuccess(true);
             setTimeout(() => {
                 onClose();
             }, 3000);
-        }, 1500);
+
+        } catch (error) {
+            setSubmissionError(error instanceof Error ? error.message : 'Error de conexión. Revisa tu internet.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
+
 
     return (
         <div 
@@ -228,6 +253,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                     <input id="business" type="text" value={business} onChange={(e) => setBusiness(e.target.value)} placeholder="Ej: Tienda de Ropa, Consultoría..." className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a2be2] bg-[#111439] text-white transition-colors ${errors.business ? 'border-red-500/50' : 'border-white/20'}`} aria-invalid={!!errors.business} aria-describedby="business-error" />
                                     <p id="business-error" className="text-red-400 text-sm mt-1 h-5 transition-opacity duration-300" role="alert">{errors.business}</p>
                                 </div>
+                                {submissionError && (
+                                    <div className="text-center bg-red-500/10 text-red-400 text-sm p-3 rounded-lg my-2" role="alert">
+                                        {submissionError}
+                                    </div>
+                                )}
                                 <div className="pt-3" data-animate-stagger>
                                     <button type="submit" className="w-full flex justify-center items-center gap-2 gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 ease-in-out hover:scale-105 btn-glow disabled:opacity-50 disabled:cursor-not-allowed" disabled={isSubmitting}>
                                         {isSubmitting ? (
