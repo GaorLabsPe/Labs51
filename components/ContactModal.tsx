@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import CloseIcon from './icons/CloseIcon';
 import SendIcon from './icons/SendIcon';
@@ -7,15 +8,27 @@ interface ContactModalProps {
     onClose: () => void;
 }
 
-// Datos de los códigos de país
+// Datos de los códigos de país ampliados
 const countryCodes = [
-    { code: '+51', name: 'PE' },
-    { code: '+34', name: 'ES' },
-    { code: '+52', name: 'MX' },
-    { code: '+54', name: 'AR' },
-    { code: '+57', name: 'CO' },
-    { code: '+56', name: 'CL' },
-    { code: '+1', name: 'US' },
+    { code: '+51', name: 'PE' }, // Perú
+    { code: '+54', name: 'AR' }, // Argentina
+    { code: '+591', name: 'BO' }, // Bolivia
+    { code: '+55', name: 'BR' }, // Brasil
+    { code: '+56', name: 'CL' }, // Chile
+    { code: '+57', name: 'CO' }, // Colombia
+    { code: '+593', name: 'EC' }, // Ecuador
+    { code: '+595', name: 'PY' }, // Paraguay
+    { code: '+598', name: 'UY' }, // Uruguay
+    { code: '+58', name: 'VE' }, // Venezuela
+    { code: '+52', name: 'MX' }, // México
+    { code: '+34', name: 'ES' }, // España
+    { code: '+1', name: 'US' },  // USA
+    { code: '+1', name: 'CA' },  // Canada
+    { code: '+44', name: 'GB' }, // Reino Unido
+    { code: '+49', name: 'DE' }, // Alemania
+    { code: '+33', name: 'FR' }, // Francia
+    { code: '+39', name: 'IT' }, // Italia
+    { code: '+351', name: 'PT' },// Portugal
 ];
 
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
@@ -89,13 +102,19 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             newErrors.name = 'El nombre es obligatorio.';
             isValid = false;
         }
-        if (!phone.trim()) {
+
+        // Limpia el teléfono de espacios, guiones y paréntesis antes de validar
+        const sanitizedPhone = phone.replace(/[\s-()]/g, '');
+
+        if (!sanitizedPhone) {
             newErrors.phone = 'El teléfono es obligatorio.';
             isValid = false;
-        } else if (!/^\d{7,15}$/.test(phone.replace(/\s/g, ''))) {
+        } else if (sanitizedPhone.length < 7 || sanitizedPhone.length > 15) {
             newErrors.phone = 'Introduce un número de teléfono válido.';
             isValid = false;
         }
+
+
         if (!business.trim()) {
             newErrors.business = 'El nombre del negocio es obligatorio.';
             isValid = false;
@@ -174,8 +193,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                                 className="cursor-pointer appearance-none gradient-bg text-white font-semibold pl-4 pr-10 py-2 rounded-l-lg focus:outline-none transition-all duration-300 hover:brightness-110 btn-glow"
                                                 aria-label="Código de país"
                                             >
-                                                {countryCodes.map(country => (
-                                                    <option key={country.name} value={country.code} className="bg-[#1c1f48] font-semibold text-white">{country.name} {country.code}</option>
+                                                {countryCodes.map((country, index) => (
+                                                    <option key={`${country.name}-${index}`} value={country.code} className="bg-[#1c1f48] font-semibold text-white">{country.name} {country.code}</option>
                                                 ))}
                                             </select>
                                             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-white">
