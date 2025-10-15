@@ -9,8 +9,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal }) => {
-  const handleOpenModalClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const handleOpenModalClick = () => {
     onClose();
     setTimeout(() => {
         onOpenModal();
@@ -27,21 +26,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal })
            <CloseIcon />
          </button>
       </div>
-      <nav className="flex flex-col h-[calc(100vh-72px)] px-8 pt-8 pb-6">
+      <nav className="flex flex-col h-[calc(100vh-72px)] px-8 pt-8 pb-10">
         <div className="flex flex-col items-center space-y-8 text-center mt-8">
             <a href="#features" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Características</a>
             <a href="#how-it-works" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Proceso</a>
             <a href="#automation" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Automatización</a>
             <a href="#pricing" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Planes</a>
-            <a href="#" onClick={handleOpenModalClick} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Contáctanos</a>
+            <button type="button" onClick={handleOpenModalClick} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Contáctanos</button>
         </div>
         <div className="mt-auto w-full">
-             <a 
-                href="#" 
+             <button
+                type="button"
                 onClick={handleOpenModalClick}
                 className="block w-full text-center gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 btn-glow">
                 Empezar Ahora
-              </a>
+              </button>
         </div>
       </nav>
     </div>
