@@ -62,17 +62,20 @@ const App: React.FC = () => {
         <LoadingScreen onAnimationComplete={() => setIsLoading(false)} />
       ) : (
         <>
-          <div className="app-fade-in bg-[#111439] font-sans text-slate-300 relative w-full overflow-x-hidden">
-            {/* Background Shapes */}
+          {/* Background Shapes - Isolated from content flow */}
+          <div 
+            className="fixed inset-0 -z-10"
+            aria-hidden="true"
+          >
             <div 
-              className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px] -z-10"
-              aria-hidden="true"
+              className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px]"
             ></div>
             <div 
-              className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px] -z-10"
-              aria-hidden="true"
+              className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px]"
             ></div>
+          </div>
 
+          <div className="app-fade-in font-sans text-slate-300 w-full">
             <Navbar onOpenModal={openModal} />
             <main>
               <Hero onOpenModal={openModal} />
