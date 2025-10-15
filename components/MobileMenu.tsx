@@ -8,21 +8,18 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
-  // Maneja el clic en un enlace de modal
   const handleModalLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    onClose(); // Cierra el menú móvil primero
-    // El evento de clic se propagará y será capturado por el listener en App.tsx para abrir el modal
-    // Pero necesitamos un pequeño retraso para que las transiciones no choquen
+    onClose();
     setTimeout(() => {
         const customEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
         e.currentTarget.dispatchEvent(customEvent);
-    }, 300); // 300ms es la duración de la transición del menú
+    }, 300); 
   };
   
   return (
     <div className={`fixed inset-0 z-[100] bg-[#111439] transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`} role="dialog" aria-modal="true">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center h-[72px]">
+      <div className="container mx-auto px-6 h-[72px] flex justify-between items-center border-b border-white/10">
          <a href="#" onClick={onClose} aria-label="Página de inicio de Labs51">
            <Logo className="h-9 w-auto" />
          </a>
@@ -30,12 +27,23 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
            <CloseIcon />
          </button>
       </div>
-      <nav className="flex flex-col items-center justify-center h-[calc(100vh-72px)] space-y-8">
-        <a href="#features" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Características</a>
-        <a href="#how-it-works" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Proceso</a>
-        <a href="#automation" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Automatización</a>
-        <a href="#pricing" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Planes</a>
-        <a href="#" data-trigger-modal onClick={handleModalLinkClick} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Contáctanos</a>
+      <nav className="flex flex-col h-[calc(100vh-72px)] p-8">
+        <div className="flex flex-col items-center space-y-8 text-center mt-8">
+            <a href="#features" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Características</a>
+            <a href="#how-it-works" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Proceso</a>
+            <a href="#automation" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Automatización</a>
+            <a href="#pricing" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Planes</a>
+            <a href="#" data-trigger-modal onClick={handleModalLinkClick} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Contáctanos</a>
+        </div>
+        <div className="mt-auto w-full">
+             <a 
+                href="#" 
+                data-trigger-modal
+                onClick={handleModalLinkClick}
+                className="block w-full text-center gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 btn-glow">
+                Empezar Ahora
+              </a>
+        </div>
       </nav>
     </div>
   );
