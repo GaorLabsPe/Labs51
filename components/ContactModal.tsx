@@ -137,7 +137,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             setIsSuccess(true);
             setTimeout(() => {
                 onClose();
-            }, 2500);
+            }, 3000);
         }, 1500);
     };
 
@@ -169,8 +169,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                             <div data-animate-stagger className="flex items-center justify-center h-16 w-16 rounded-full gradient-bg text-white mx-auto mb-6">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                             </div>
-                            <h2 id="contact-modal-title" data-animate-stagger className="text-2xl font-bold text-white mb-2">¡Gracias!</h2>
-                            <p data-animate-stagger className="text-slate-300">Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.</p>
+                            <h2 id="contact-modal-title" data-animate-stagger className="text-2xl font-bold text-white mb-2">¡Felicidades!</h2>
+                            <p data-animate-stagger className="text-slate-300">Has dado el primer paso para revolucionar tu negocio. Prepárate para vender en piloto automático.</p>
                         </div>
                     ) : (
                         <>
@@ -221,7 +221,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                             </>
                                         ) : (
                                             <>
-                                                Enviar Contacto
+                                                Dar el Primer Paso al Futuro
                                                 <SendIcon />
                                             </>
                                         )}

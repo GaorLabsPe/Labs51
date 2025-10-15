@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Logo from './Logo';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,9 +15,9 @@ const Navbar: React.FC = () => {
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#111439]/80 backdrop-blur-lg shadow-lg shadow-black/20' : 'bg-transparent'}`}>
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold">
-          <a href="#" className="text-[#F8F8F9] hover:opacity-80 transition-opacity">Labs51</a>
-        </div>
+        <a href="#" className="flex-shrink-0" aria-label="Página de inicio de Labs51">
+          <Logo className="h-10 w-auto" />
+        </a>
         <div className="hidden md:flex items-center space-x-8">
           <a href="#features" className="nav-link text-slate-300 font-medium hover:text-white transition-colors">Características</a>
           <a href="#how-it-works" className="nav-link text-slate-300 font-medium hover:text-white transition-colors">Proceso</a>

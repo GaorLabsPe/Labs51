@@ -3,6 +3,7 @@ import React from 'react';
 import TwitterIcon from './icons/TwitterIcon';
 import LinkedinIcon from './icons/LinkedinIcon';
 import GithubIcon from './icons/GithubIcon';
+import Logo from './Logo';
 
 const Footer: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold text-[#F8F8F9] mb-4">Labs51</h3>
+            <div className="mb-4">
+              <Logo className="h-10 w-auto" />
+            </div>
             <p>Potenciando los negocios online del futuro con automatización y diseño de vanguardia.</p>
           </div>
           <div>
