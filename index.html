@@ -160,6 +160,27 @@
             animation: pulse-glow 2.5s infinite;
         }
 
+        /* Loading screen animations */
+        @keyframes draw-line {
+            from { stroke-dashoffset: 1; }
+            to { stroke-dashoffset: 0; }
+        }
+        .draw-line {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            animation: draw-line 1s ease-out forwards;
+        }
+        @keyframes pop-in {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .pop-in {
+            opacity: 0;
+            transform-origin: center;
+            animation: pop-in 0.5s ease-out forwards;
+        }
+        
+
         /* -- UI ENHANCEMENTS -- */
         .gradient-text {
             background: linear-gradient(to right, #8a2be2, #00f0b5);
