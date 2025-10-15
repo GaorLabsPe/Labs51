@@ -1,11 +1,10 @@
 import React from 'react';
 import BoltIcon from './icons/BoltIcon';
 import WhatsappIcon from './icons/WhatsappIcon';
-import EmailIcon from './icons/EmailIcon';
-import SheetIcon from './icons/SheetIcon';
 import InvoiceIcon from './icons/InvoiceIcon';
 import UsersIcon from './icons/UsersIcon';
-import CogIcon from './icons/CogIcon';
+import CartClockIcon from './icons/CartClockIcon';
+import TagIcon from './icons/TagIcon';
 
 // Nuevo componente de ilustración SVG, creado para coincidir con el diseño deseado.
 const AutomationIllustration: React.FC<{ className?: string }> = ({ className }) => {
@@ -90,8 +89,8 @@ const AutomationIllustration: React.FC<{ className?: string }> = ({ className })
 const Automation: React.FC = () => {
     const automations = [
         { icon: <WhatsappIcon />, text: 'Notificaciones de pedidos por WhatsApp' },
-        { icon: <WhatsappIcon />, text: 'Seguimiento de carritos abandonados' },
-        { icon: <CogIcon />, text: 'Gestión de productos con variantes' },
+        { icon: <CartClockIcon />, text: 'Seguimiento de carritos abandonados' },
+        { icon: <TagIcon />, text: 'Gestión de productos con variantes' },
         { icon: <InvoiceIcon />, text: 'Generación de reportes de ventas' },
         { icon: <UsersIcon />, text: 'Dashboard y CRM para gestión de clientes' },
         { icon: <BoltIcon />, text: 'Y muchas más integraciones...' },

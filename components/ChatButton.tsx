@@ -27,7 +27,7 @@ const ChatButton: React.FC = () => {
                   },
                 });
                 setMessages([
-                    { role: 'model', text: '¡Hola! Soy el asistente de Labs51. ¿Te gustaría saber cómo podemos automatizar tu negocio con nuestra potente integración n8n?' }
+                    { role: 'model', text: '¡Hola! ¿Listo para ver cómo tu tienda puede vender en piloto automático? Pregúntame cómo funciona o pide hablar con un experto.' }
                 ]);
             } catch (error) {
                  console.error("Failed to initialize Gemini Chat:", error);

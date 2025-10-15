@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
 import Automation from './components/Automation';
 import ServiceIncludes from './components/ServiceIncludes';
 import Stats from './components/Stats';
+import Testimonials from './components/Testimonials';
 import Growth from './components/Growth';
+import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import ChatButton from './components/ChatButton';
 
@@ -47,10 +50,13 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <Features />
+        <HowItWorks />
         <Automation />
         <ServiceIncludes />
         <Stats />
+        <Testimonials />
         <Growth />
+        <Pricing />
       </main>
       <Footer />
       <ChatButton />

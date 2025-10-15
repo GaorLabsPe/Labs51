@@ -17,9 +17,9 @@ const Footer: React.FC = () => {
             <h4 className="font-bold text-[#F8F8F9] mb-4">Navegación</h4>
             <ul className="space-y-2">
               <li><a href="#features" className="hover:text-[#00f0b5] transition-colors">Características</a></li>
+              <li><a href="#how-it-works" className="hover:text-[#00f0b5] transition-colors">Proceso</a></li>
               <li><a href="#automation" className="hover:text-[#00f0b5] transition-colors">Automatización</a></li>
-              <li><a href="#service" className="hover:text-[#00f0b5] transition-colors">Servicio</a></li>
-              <li><a href="#growth" className="hover:text-[#00f0b5] transition-colors">Crecimiento</a></li>
+              <li><a href="#pricing" className="hover:text-[#00f0b5] transition-colors">Planes</a></li>
             </ul>
           </div>
           <div>

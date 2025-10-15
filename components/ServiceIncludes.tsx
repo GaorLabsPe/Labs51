@@ -1,6 +1,60 @@
 import React from 'react';
 import CheckIcon from './icons/CheckIcon';
 
+const ServiceIllustration: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <svg 
+      width="500" 
+      height="500" 
+      viewBox="0 0 500 500" 
+      xmlns="http://www.w3.org/2000/svg" 
+      className={className} 
+      aria-labelledby="service-title" 
+      role="img"
+    >
+      <title id="service-title">Proceso de implementación de tienda online automatizada</title>
+      <defs>
+        <linearGradient id="si-grad-jsx" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#8a2be2' }} />
+          <stop offset="100%" style={{ stopColor: '#00f0b5' }} />
+        </linearGradient>
+        <filter id="si-shadow-jsx" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="10" stdDeviation="15" floodColor="#000000" floodOpacity="0.3" />
+        </filter>
+      </defs>
+      <g filter="url(#si-shadow-jsx)">
+        <rect x="50" y="100" width="400" height="300" rx="20" fill="#1c1f48" stroke="#8a2be2" strokeOpacity="0.5" />
+        <rect x="50" y="100" width="400" height="40" rx="20" ry="20" fill="#111439" />
+        <circle cx="80" cy="120" r="8" fill="#4f4f4f" />
+        <circle cx="110" cy="120" r="8" fill="#4f4f4f" />
+        <circle cx="140" cy="120" r="8" fill="#4f4f4f" />
+      </g>
+      <rect x="70" y="150" width="100" height="230" rx="10" fill="#111439" />
+      <rect x="85" y="170" width="70" height="10" rx="5" fill="url(#si-grad-jsx)" />
+      <rect x="85" y="195" width="50" height="8" rx="4" fill="#4f4f4f" />
+      <rect x="85" y="215" width="50" height="8" rx="4" fill="#4f4f4f" />
+      <rect x="85" y="235" width="50" height="8" rx="4" fill="#4f4f4f" />
+      <rect x="190" y="150" width="240" height="230" rx="10" fill="#111439" />
+      <path d="M 210 250 C 230 220, 260 280, 280 250 S 320 200, 340 230 S 380 280, 400 250" stroke="url(#si-grad-jsx)" strokeWidth="3" fill="none" />
+      <g transform="translate(0, 50)">
+        <rect x="210" y="240" width="90" height="70" rx="10" fill="#1c1f48" stroke="#00f0b5" strokeOpacity="0.5" />
+        <circle cx="255" cy="265" r="15" fill="#111439" />
+        <rect x="225" y="290" width="60" height="8" rx="4" fill="#4f4f4f" />
+      </g>
+      <g transform="translate(110, 50)">
+        <rect x="210" y="240" width="90" height="70" rx="10" fill="#1c1f48" stroke="#8a2be2" strokeOpacity="0.5" />
+        <circle cx="255" cy="265" r="15" fill="#111439" />
+        <rect x="225" y="290" width="60" height="8" rx="4" fill="#4f4f4f" />
+      </g>
+      <g transform="translate(350, 50)" filter="url(#si-shadow-jsx)">
+        <circle cx="0" cy="0" r="25" fill="url(#si-grad-jsx)" />
+        <path d="M -10 0 L -2 8 L 10 -4" stroke="white" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    </svg>
+  );
+};
+
+
 const ServiceIncludes: React.FC = () => {
   const items = [
     'Configuración Completa en tu propio hosting.',
@@ -9,8 +63,6 @@ const ServiceIncludes: React.FC = () => {
     'Implementación de Flujos de Automatización clave con n8n.',
     'Capacitación para gestionar tu tienda y pedidos.',
   ];
-
-  const serviceImageSrc = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzZXJ2aWNlLWdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM4YTJiZTIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMGYwYjUiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InNlcnZpY2Utc2hhZG93IiB4PSItMzAlIiB5PSItMzAlIiB3aWR0aD0iMTYwJSIgaGVpZ2h0PSIxNjAlIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iMTAiIHN0ZERldmlhdGlvbj0iMTUiIGZsb29kLWNvbG9yPSIjMDAwMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjIiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3QgeD0iNTAiIHk9IjE1MCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyNTAiIHJ4PSIyMCIgZmlsbD0iIzFjMWY0OCIgZmlsdGVyPSJ1cmwoI3NlcnZpY2Utc2hhZG93KSIvPjxyZWN0IHg9IjUwIiB5PSIxNTAiIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgcnk9IjIwIiBmaWxsPSJ1cmwoI3NlcnZpY2UtZ3JhZCkiIG9wYWNpdHk9IjAuMSIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iMTcwIiByPSI4IiBmaWxsPSIjOGEyYmUyIiBvcGFjaXR5PSIwLjUiLz48Y2lyY2xlIGN4PSIxMTAiIGN5PSIxNzAiIHI9IjgiIGZpbGw9IiMwMGYwYjUiIG9wYWNpdHk9IjAuNSIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwLCAtMjApIiBmaWx0ZXI9InVybCgjc2VydmljZS1zaGFkb3cpIj48cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSIxODAiIGhlaWdodD0iMTAwIiByeD0iMTUiIGZpbGw9IiMxMTE0MzkiIHN0cm9rZT0iIzhhMmJlMiIgc3Ryb2tlLW9wYWNpdHk9IjAuNSIvPjxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iMTAiIGZpbGw9IiMwMGYwYjUiLz48cGF0aCBkPSJNIDEwNiAxMzAgTCAxMDkgMTM0IEwgMTE1IDEyNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHJlY3QgeD0iMTMwIiB5PSIxMjUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSIjMWMxZjQ4Ii8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE1MCwgNDApIiBmaWx0ZXI9InVybCgjc2VydmljZS1zaGFkb3cpIj48cmVjdCB4PSIxNTAiIHk9IjIwMCIgd2lkdGg9IjIyMCIgaGVpZ2h0PSIxMjAiIHJ4PSIxNSIgZmlsbD0iIzExMTQzOSIgc3Ryb2tlPSIjMDBmMGI1IiBzdHJva2Utb3BhY2l0eT0iMC41Ii8+PGNpcmNsZSBjeD0iMTgwIiBjeT0iMjMwIiByPSIxMCIgZmlsbD0iIzAwZjBiNSIvPjxwYXRoIGQ9Ik0gMTc2IDIzMCBMIDE3OSAyMzQgTCAxODUgMjI2IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48cmVjdCB4PSIyMDAiIHk9IjIyNSIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxMCIgcng9IjUiIGZpbGw9IiMxYzFmNDgiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSIyNjAiIHI9IjEwIiBmaWxsPSIjMDBmMGI1Ii8+PHBhdGggZD0iTSAxNzYgMjYwIEwgMTc5IDI2NCBMIDE4NSAyNTYiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjxyZWN0IHg9IjIwMCIgeT0iMjU1IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iIzFjMWY0OCIvPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjI5MCIgcj0iMTAiIGZpbGw9IiMxYzFmNDgiIHN0cm9rZT0iIzAwZjBiNSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cmVjdCB4PSIyMDAiIHk9IjI4NSIgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxMCIgcng9IjUiIGZpbGw9IiMxYzFmNDgiLz48L2c+PC9zdmc+";
 
   return (
     <section id="service" className="py-24" data-animate-section>
@@ -34,7 +86,7 @@ const ServiceIncludes: React.FC = () => {
             </ul>
           </div>
           <div className="flex justify-center">
-            <img src={serviceImageSrc} alt="Proceso de implementación de tienda online automatizada" className="max-w-md w-full h-auto" />
+            <ServiceIllustration className="max-w-md w-full h-auto animate-float" />
           </div>
         </div>
       </div>
