@@ -3,7 +3,11 @@ import Logo from './Logo';
 import HamburgerIcon from './icons/HamburgerIcon';
 import MobileMenu from './MobileMenu';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenModal: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -60,7 +64,7 @@ const Navbar: React.FC = () => {
           </div>
         </nav>
       </header>
-      <MobileMenu isOpen={isMenuOpen} onClose={handleCloseMenu} />
+      <MobileMenu isOpen={isMenuOpen} onClose={handleCloseMenu} onOpenModal={onOpenModal} />
     </>
   );
 };

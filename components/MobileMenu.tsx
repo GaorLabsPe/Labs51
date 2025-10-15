@@ -5,16 +5,16 @@ import Logo from './Logo';
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenModal: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
-  const handleModalLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenModal }) => {
+  const handleOpenModalClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     onClose();
     setTimeout(() => {
-        const customEvent = new MouseEvent('click', { bubbles: true, cancelable: true });
-        e.currentTarget.dispatchEvent(customEvent);
-    }, 300); 
+        onOpenModal();
+    }, 300); // Espera a que la animación de cierre del menú termine
   };
   
   return (
@@ -27,19 +27,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
            <CloseIcon />
          </button>
       </div>
-      <nav className="flex flex-col h-[calc(100vh-72px)] p-8">
+      <nav className="flex flex-col h-[calc(100vh-72px)] px-8 pt-8 pb-6">
         <div className="flex flex-col items-center space-y-8 text-center mt-8">
             <a href="#features" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Características</a>
             <a href="#how-it-works" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Proceso</a>
             <a href="#automation" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Automatización</a>
             <a href="#pricing" onClick={onClose} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Planes</a>
-            <a href="#" data-trigger-modal onClick={handleModalLinkClick} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Contáctanos</a>
+            <a href="#" onClick={handleOpenModalClick} className="text-2xl text-slate-200 hover:gradient-text transition-colors">Contáctanos</a>
         </div>
         <div className="mt-auto w-full">
              <a 
                 href="#" 
-                data-trigger-modal
-                onClick={handleModalLinkClick}
+                onClick={handleOpenModalClick}
                 className="block w-full text-center gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 btn-glow">
                 Empezar Ahora
               </a>

@@ -18,6 +18,8 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // Estado para la pantalla de carga
 
+  const openModal = () => setIsModalOpen(true);
+
   useEffect(() => {
     // Observador para animaciones de scroll
     const observer = new IntersectionObserver((entries, obs) => {
@@ -59,7 +61,7 @@ const App: React.FC = () => {
       const target = e.target as HTMLElement;
       if (target.closest('[data-trigger-modal]')) {
         e.preventDefault();
-        setIsModalOpen(true);
+        openModal();
       }
     };
 
@@ -86,7 +88,7 @@ const App: React.FC = () => {
             aria-hidden="true"
           ></div>
 
-          <Navbar />
+          <Navbar onOpenModal={openModal} />
           <main>
             <Hero />
             <Features />
