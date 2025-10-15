@@ -11,10 +11,12 @@ import Growth from './components/Growth';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import ChatButton from './components/ChatButton';
-import ContactModal from './components/ContactModal'; // Importar el nuevo modal
+import ContactModal from './components/ContactModal';
+import LoadingScreen from './components/LoadingScreen'; // Importar la pantalla de carga
 
 const App: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para el modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Estado para la pantalla de carga
 
   useEffect(() => {
     // Observador para animaciones de scroll
@@ -36,11 +38,22 @@ const App: React.FC = () => {
       });
     }, { threshold: 0.15 });
 
-    const sections = document.querySelectorAll('[data-animate-section]');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    // No iniciar observadores hasta que la carga termine
+    if (!isLoading) {
+        const sections = document.querySelectorAll('[data-animate-section]');
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+        
+        return () => {
+          sections.forEach(section => {
+            observer.unobserve(section);
+          });
+        };
+    }
+  }, [isLoading]);
 
+  useEffect(() => {
     // Listener de eventos para los disparadores del modal
     const handleModalTriggerClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -53,41 +66,44 @@ const App: React.FC = () => {
     document.addEventListener('click', handleModalTriggerClick);
 
     return () => {
-      sections.forEach(section => {
-        observer.unobserve(section);
-      });
       document.removeEventListener('click', handleModalTriggerClick);
     };
   }, []);
 
   return (
-    <div className="bg-[#111439] font-sans text-slate-300 relative z-10 w-full overflow-x-hidden">
-      {/* Background Shapes */}
-      <div 
-        className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px] -z-10"
-        aria-hidden="true"
-      ></div>
-      <div 
-        className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px] -z-10"
-        aria-hidden="true"
-      ></div>
+    <>
+      {isLoading ? (
+        <LoadingScreen onAnimationComplete={() => setIsLoading(false)} />
+      ) : (
+        <div className="app-fade-in bg-[#111439] font-sans text-slate-300 relative z-10 w-full overflow-x-hidden">
+          {/* Background Shapes */}
+          <div 
+            className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#8a2be2]/20 rounded-full filter blur-[150px] -z-10"
+            aria-hidden="true"
+          ></div>
+          <div 
+            className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#00f0b5]/20 rounded-full filter blur-[150px] -z-10"
+            aria-hidden="true"
+          ></div>
 
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <Automation />
-        <ServiceIncludes />
-        <Stats />
-        <Testimonials />
-        <Growth />
-        <Pricing />
-      </main>
-      <Footer />
-      <ChatButton />
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </div>
+          <Navbar />
+          <main>
+            <Hero />
+            <Features />
+            <HowItWorks />
+            <Automation />
+            <ServiceIncludes />
+            <Stats />
+            <Testimonials />
+            <Growth />
+            <Pricing />
+          </main>
+          <Footer />
+          <ChatButton />
+          <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </div>
+      )}
+    </>
   );
 };
 
