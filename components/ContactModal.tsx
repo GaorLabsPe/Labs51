@@ -51,13 +51,15 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
         if (isOpen) {
             document.body.style.overflow = 'hidden';
-            // Activar animación de entrada
-            requestAnimationFrame(() => {
-                animatedElements.forEach((el, index) => {
-                    (el as HTMLElement).style.transitionDelay = `${index * 100}ms`;
-                    el.classList.add('animate-in');
+            // Activar animación de entrada solo para el formulario inicial
+            if (!isSuccess) {
+                requestAnimationFrame(() => {
+                    animatedElements.forEach((el, index) => {
+                        (el as HTMLElement).style.transitionDelay = `${index * 100}ms`;
+                        el.classList.add('animate-in');
+                    });
                 });
-            });
+            }
         } else {
             document.body.style.overflow = 'auto';
              // Resetear animaciones
@@ -77,8 +79,22 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             document.body.style.overflow = 'auto';
             window.removeEventListener('keydown', handleEsc);
         };
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, isSuccess]);
     
+    // Efecto para la animación del mensaje de éxito
+    useEffect(() => {
+        if (isSuccess && contentRef.current) {
+            const successElements = contentRef.current.querySelectorAll('[data-animate-stagger]');
+            // Activa la animación de entrada para los nuevos elementos del mensaje de éxito
+            requestAnimationFrame(() => {
+                successElements.forEach((el, index) => {
+                    (el as HTMLElement).style.transitionDelay = `${index * 100}ms`;
+                    el.classList.add('animate-in');
+                });
+            });
+        }
+    }, [isSuccess]);
+
     // Efecto para resetear el estado cuando el modal se cierra
     useEffect(() => {
         if (!isOpen) {
