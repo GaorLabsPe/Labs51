@@ -18,12 +18,12 @@ const Hero: React.FC = () => {
               La plataforma todo-en-uno para crear y escalar tu tienda online con potentes automatizaciones n8n, sin complicaciones técnicas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fadeInUp" style={{animationDelay: '0.5s'}}>
-              <a 
-                href="#" 
+              <button
+                type="button"
                 data-trigger-modal
                 className="gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/40 btn-glow">
                 Empezar Ahora
-              </a>
+              </button>
               <a 
                 href="#features" 
                 className="bg-transparent text-[#F8F8F9] font-bold py-3 px-8 rounded-lg border-2 border-[#F8F8F9]/50 hover:border-white hover:bg-white/5 text-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40">

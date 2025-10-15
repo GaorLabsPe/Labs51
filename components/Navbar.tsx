@@ -52,8 +52,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
             <a href="#how-it-works" className="nav-link text-slate-300 font-medium hover:text-white transition-colors">Proceso</a>
             <a href="#automation" className="nav-link text-slate-300 font-medium hover:text-white transition-colors">Automatización</a>
             <a href="#pricing" className="nav-link text-slate-300 font-medium hover:text-white transition-colors">Planes</a>
-            <a href="#" data-trigger-modal className="hidden lg:block text-slate-300 font-bold hover:text-white transition-colors nav-link">Contáctanos</a>
-            <a href="#" data-trigger-modal className="gradient-bg text-white font-bold py-2 px-5 rounded-lg hover:opacity-90 transition-all duration-300 btn-glow">Empezar Ahora</a>
+            <button type="button" data-trigger-modal className="hidden lg:block text-slate-300 font-bold hover:text-white transition-colors nav-link">Contáctanos</button>
+            <button type="button" data-trigger-modal className="gradient-bg text-white font-bold py-2 px-5 rounded-lg hover:opacity-90 transition-all duration-300 btn-glow">Empezar Ahora</button>
           </div>
               
           {/* Mobile Menu Button */}
