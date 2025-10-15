@@ -8,11 +8,18 @@ interface Message {
     text: string;
 }
 
+const suggestedPrompts = [
+    '¿Cómo funciona n8n?',
+    'Ver planes de precios',
+    'Quiero hablar con un experto',
+];
+
 const ChatButton: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [showSuggestions, setShowSuggestions] = useState(true);
     const chatRef = useRef<Chat | null>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -29,6 +36,7 @@ const ChatButton: React.FC = () => {
                 setMessages([
                     { role: 'model', text: '¡Hola! ¿Listo para ver cómo tu tienda puede vender en piloto automático? Pregúntame cómo funciona o pide hablar con un experto.' }
                 ]);
+                setShowSuggestions(true); // Resetear sugerencias al abrir
             } catch (error) {
                  console.error("Failed to initialize Gemini Chat:", error);
                 setMessages([
@@ -42,11 +50,14 @@ const ChatButton: React.FC = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-    const handleSendMessage = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!input.trim() || isLoading || !chatRef.current) return;
+    const sendMessage = async (messageText: string) => {
+        if (!messageText.trim() || isLoading || !chatRef.current) return;
 
-        const userMessage: Message = { role: 'user', text: input };
+        if (showSuggestions) {
+            setShowSuggestions(false);
+        }
+
+        const userMessage: Message = { role: 'user', text: messageText };
         setMessages(prev => [...prev, userMessage]);
         setInput('');
         setIsLoading(true);
@@ -54,7 +65,7 @@ const ChatButton: React.FC = () => {
         setMessages(prev => [...prev, { role: 'model', text: '' }]);
 
         try {
-            const stream = await chatRef.current.sendMessageStream({ message: input });
+            const stream = await chatRef.current.sendMessageStream({ message: messageText });
             let currentResponse = '';
             for await (const chunk of stream) {
                 currentResponse += chunk.text;
@@ -75,6 +86,11 @@ const ChatButton: React.FC = () => {
             setIsLoading(false);
         }
     };
+
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        sendMessage(input);
+    };
     
     return (
         <div className="fixed bottom-5 right-5 z-50">
@@ -82,7 +98,7 @@ const ChatButton: React.FC = () => {
                 <div className="w-80 h-[28rem] bg-[#111439] rounded-xl shadow-2xl flex flex-col border border-white/10">
                     <header className="bg-[#1c1f48] text-white p-4 rounded-t-xl border-b border-white/10">
                         <h3 className="font-bold text-lg">Asistente Labs51</h3>
-                        <p className="text-sm text-slate-300">Pregúntame cualquier cosa</p>
+                        <p className="text-sm text-slate-300">Respondo al instante</p>
                     </header>
                     <main className="flex-1 p-4 overflow-y-auto">
                         <div className="space-y-4">
@@ -93,6 +109,19 @@ const ChatButton: React.FC = () => {
                                     </div>
                                 </div>
                             ))}
+                            {showSuggestions && messages.length === 1 && (
+                                <div className="flex flex-wrap gap-2 pt-2">
+                                    {suggestedPrompts.map((prompt, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => sendMessage(prompt)}
+                                            className="px-3 py-1 text-sm border border-white/30 rounded-full text-slate-200 hover:bg-white/10 transition-colors duration-200"
+                                        >
+                                            {prompt}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                              {isLoading && messages[messages.length - 1]?.text === '' && (
                                 <div className="flex justify-start">
                                     <div className="bg-[#1c1f48] rounded-lg px-3 py-2">
@@ -108,7 +137,7 @@ const ChatButton: React.FC = () => {
                         </div>
                     </main>
                     <footer className="p-2 border-t border-white/10 bg-[#111439] rounded-b-xl">
-                        <form onSubmit={handleSendMessage} className="flex items-center gap-2">
+                        <form onSubmit={handleFormSubmit} className="flex items-center gap-2">
                             <input
                                 type="text"
                                 value={input}

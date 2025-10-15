@@ -1,50 +1,11 @@
 import React from 'react';
 
-// Se define el SVG como un componente local de React para garantizar su renderizado y rendimiento.
-// Esto evita problemas de incompatibilidad entre la animación CSS y la etiqueta <img>.
-const HeroIllustration: React.FC<{ className?: string }> = ({ className }) => {
-  return (
-    <svg 
-      width="500" 
-      height="500" 
-      viewBox="0 0 500 500" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-labelledby="hero-title"
-      role="img"
-    >
-      <title id="hero-title">Diagrama de automatización de negocio con una tienda online de Labs51</title>
-      <defs>
-        <linearGradient id="hero-grad-jsx" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{stopColor:'#8a2be2'}}/>
-          <stop offset="100%" style={{stopColor:'#00f0b5'}}/>
-        </linearGradient>
-        <filter id="hero-shadow-jsx" x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="10" stdDeviation="15" floodColor="#000000" floodOpacity="0.3"/>
-        </filter>
-      </defs>
-      
-      <g transform="rotate(15, 250, 250)">
-        <circle cx="250" cy="250" r="200" stroke="url(#hero-grad-jsx)" strokeWidth="2" fill="none" opacity="0.2" strokeDasharray="10 10"/>
-        <circle cx="250" cy="250" r="150" stroke="url(#hero-grad-jsx)" strokeWidth="1.5" fill="none" opacity="0.3"/>
-        <circle cx="250" cy="250" r="100" stroke="#00f0b5" strokeWidth="1" fill="none" opacity="0.5"/>
-        <g transform="translate(180, 180) rotate(45, 70, 70)" filter="url(#hero-shadow-jsx)">
-          <rect x="0" y="0" width="140" height="140" rx="20" fill="#1c1f48" stroke="url(#hero-grad-jsx)" strokeWidth="2"/>
-          <path d="M 70 20 L 70 120" stroke="#8a2be2" strokeWidth="2" opacity="0.5"/>
-          <path d="M 20 70 L 120 70" stroke="#00f0b5" strokeWidth="2" opacity="0.5"/>
-          <circle cx="70" cy="70" r="10" fill="url(#hero-grad-jsx)"/>
-        </g>
-        <circle cx="100" cy="100" r="15" fill="#1c1f48" stroke="#8a2be2" strokeWidth="2"/>
-        <circle cx="400" cy="400" r="20" fill="#1c1f48" stroke="#00f0b5" strokeWidth="2"/>
-        <rect x="350" y="80" width="40" height="40" rx="10" fill="none" stroke="url(#hero-grad-jsx)" strokeWidth="2" transform="rotate(-30, 370, 100)"/>
-        <rect x="80" y="350" width="30" height="30" rx="5" fill="none" stroke="url(#hero-grad-jsx)" strokeWidth="2" transform="rotate(60, 95, 365)"/>
-      </g>
-    </svg>
-  );
-};
-
+// Se ha eliminado el componente HeroIllustration ya que será reemplazado por un video.
 
 const Hero: React.FC = () => {
+  // Un póster SVG optimizado y codificado como Data URI para eliminar una solicitud HTTP.
+  const posterSvgDataUri = "data:image/svg+xml,%3csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3cfilter id='b' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur stdDeviation='20' /%3e%3c/filter%3e%3clinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='512' y2='512'%3e%3cstop offset='0' stop-color='%23111439'/%3e%3cstop offset='.5' stop-color='%238a2be2'/%3e%3cstop offset='1' stop-color='%2300f0b5'/%3e%3c/linearGradient%3e%3c/defs%3e%3crect width='100%25' height='100%25' fill='url(%23a)' opacity='0.5'/%3e%3crect width='100%25' height='100%25' fill='url(%23a)' filter='url(%23b)' opacity='0.5'/%3e%3c/svg%3e";
+
   return (
     <section className="relative bg-[#111439] overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
@@ -75,8 +36,21 @@ const Hero: React.FC = () => {
               </a>
             </div>
           </div>
-          <div className="hidden lg:flex justify-center items-center">
-             <HeroIllustration className="w-full max-w-lg h-auto animate-float"/>
+          <div className="flex justify-center items-center mt-12 lg:mt-0">
+             <div className="w-full max-w-lg h-auto rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 border-2 border-white/10 animate-float bg-[#111439]">
+                <video
+                    src="https://videos.pexels.com/video-files/8061352/8061352-hd_1920_1080_25fps.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster={posterSvgDataUri}
+                    className="w-full h-full object-cover"
+                    title="Emprendedora feliz gestionando los pedidos de su tienda online"
+                >
+                    Tu navegador no soporta el elemento de video.
+                </video>
+             </div>
           </div>
         </div>
       </div>

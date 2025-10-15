@@ -15,8 +15,8 @@ const ServiceIllustration: React.FC<{ className?: string }> = ({ className }) =>
       <title id="service-title">Proceso de implementación de tienda online automatizada</title>
       <defs>
         <linearGradient id="si-grad-jsx" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{ stopColor: '#8a2be2' }} />
-          <stop offset="100%" style={{ stopColor: '#00f0b5' }} />
+          <stop offset="0%" stopColor="#8a2be2" />
+          <stop offset="100%" stopColor="#00f0b5" />
         </linearGradient>
         <filter id="si-shadow-jsx" x="-30%" y="-30%" width="160%" height="160%">
           <feDropShadow dx="0" dy="10" stdDeviation="15" floodColor="#000000" floodOpacity="0.3" />

@@ -1,5 +1,6 @@
 import React from 'react';
 import QuoteIcon from './icons/QuoteIcon';
+import AvatarIcon from './AvatarIcon';
 
 const Testimonials: React.FC = () => {
     const testimonialsData = [
@@ -7,13 +8,11 @@ const Testimonials: React.FC = () => {
             quote: "Labs51 transformó mi idea en un negocio real. Ahora mis ventas se gestionan solas y puedo enfocarme en mis productos. ¡El mejor partner para empezar!",
             name: "Ana Pérez",
             company: "Fundadora de Dulce Rincón",
-            avatar: "https://i.pravatar.cc/100?u=ana-perez"
         },
         {
             quote: "El proceso de automatización fue increíblemente sencillo. Ahorramos horas cada semana en tareas manuales. Totalmente recomendado para cualquier emprendedor.",
             name: "Carlos Gómez",
             company: "CEO de Tech Gadgets",
-            avatar: "https://i.pravatar.cc/100?u=carlos-gomez"
         },
     ];
 
@@ -35,7 +34,7 @@ const Testimonials: React.FC = () => {
                             <QuoteIcon className="absolute top-6 left-6 w-12 h-12 text-[#8a2be2]/30" />
                             <p className="relative text-lg text-slate-200 italic mb-6 z-10">"{testimonial.quote}"</p>
                             <div className="flex items-center">
-                                <img src={testimonial.avatar} alt={testimonial.name} className="w-14 h-14 rounded-full mr-4 border-2 border-[#00f0b5]" />
+                                <AvatarIcon name={testimonial.name} className="w-14 h-14 rounded-full mr-4 border-2 border-[#00f0b5]" />
                                 <div>
                                     <p className="font-bold text-lg text-white">{testimonial.name}</p>
                                     <p className="text-slate-400">{testimonial.company}</p>
