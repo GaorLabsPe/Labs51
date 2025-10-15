@@ -43,7 +43,7 @@ const LoadingScreen: React.FC<{ onAnimationComplete: () => void }> = ({ onAnimat
 
   return (
     <div
-      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#111439] transition-opacity duration-500 ease-in-out ${phase === 'exiting' ? 'opacity-0' : 'opacity-100'}`}
+      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#111439] transition-opacity duration-500 ease-in-out ${phase === 'exiting' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
       aria-live="polite"
       aria-busy="true"
     >
