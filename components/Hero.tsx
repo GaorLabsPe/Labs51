@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenModal: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   return (
     <section className="relative bg-[#111439] overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
@@ -20,7 +24,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fadeInUp" style={{animationDelay: '0.5s'}}>
               <button
                 type="button"
-                data-trigger-modal
+                onClick={onOpenModal}
                 className="gradient-bg text-white font-bold py-3 px-8 rounded-lg text-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/40 btn-glow">
                 Empezar Ahora
               </button>

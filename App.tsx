@@ -55,23 +55,6 @@ const App: React.FC = () => {
     }
   }, [isLoading]);
 
-  useEffect(() => {
-    // Listener de eventos para los disparadores del modal
-    const handleModalTriggerClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('[data-trigger-modal]')) {
-        e.preventDefault();
-        openModal();
-      }
-    };
-
-    document.addEventListener('click', handleModalTriggerClick);
-
-    return () => {
-      document.removeEventListener('click', handleModalTriggerClick);
-    };
-  }, []);
-
   return (
     <>
       {isLoading ? (
@@ -90,7 +73,7 @@ const App: React.FC = () => {
 
           <Navbar onOpenModal={openModal} />
           <main>
-            <Hero />
+            <Hero onOpenModal={openModal} />
             <Features />
             <HowItWorks />
             <Automation />
@@ -98,7 +81,7 @@ const App: React.FC = () => {
             <Stats />
             <Testimonials />
             <Growth />
-            <Pricing />
+            <Pricing onOpenModal={openModal} />
           </main>
           <Footer />
           <ChatButton />
