@@ -89,6 +89,7 @@ const App: React.FC = () => {
             </main>
             <Footer />
           </div>
+
           <ChatButton />
           <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
